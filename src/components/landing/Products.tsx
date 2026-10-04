@@ -9,8 +9,6 @@ import {
   Check, 
   X, 
   Star, 
-  ArrowUpRight, 
-  SlidersHorizontal,
   Image as ImageIcon,
   CheckCircle2,
   Trash2,
@@ -47,17 +45,20 @@ export default function Products() {
     { label: 'Dorm Sanctuary Decor', url: 'https://images.unsplash.com/photo-1616046229478-9901c5536a45?auto=format&fit=crop&w=1000&q=80' },
   ];
 
-  // Load products from localStorage or initialProducts
+  // Load products from localStorage on mount
   useEffect(() => {
     try {
       const saved = localStorage.getItem('glow_products_catalog');
       if (saved) {
-        setProducts(JSON.parse(saved));
-      } else {
-        setProducts(initialProducts);
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          requestAnimationFrame(() => {
+            setProducts(parsed);
+          });
+        }
       }
     } catch {
-      setProducts(initialProducts);
+      // LocalStorage fallback
     }
   }, []);
 
@@ -373,7 +374,7 @@ export default function Products() {
                   </label>
                   <select
                     value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value as any })}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value as Product['category'] })}
                     className="w-full px-4 py-3 rounded-2xl bg-white border border-[#2E4036]/20 text-sm focus:outline-none focus:border-[#CC5833] shadow-sm font-mono-data"
                   >
                     <option value="Skincare">Skincare</option>

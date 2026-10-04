@@ -1,6 +1,6 @@
 'use client';
 
-import { Check, ArrowUpRight, Sparkles, ShieldCheck } from 'lucide-react';
+import { Check, ArrowUpRight, Sparkles } from 'lucide-react';
 
 export default function Pricing() {
   const tiers = [

@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { ArrowUpRight, Heart, Mail } from 'lucide-react';
 
 export default function Footer() {
   return (

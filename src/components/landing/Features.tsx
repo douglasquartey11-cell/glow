@@ -1,43 +1,51 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { CheckCircle2, ShieldCheck, Zap, Radio, BellRing, Sparkles, Calendar, MousePointer, RefreshCw } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ShieldCheck, Radio, Calendar, RefreshCw } from 'lucide-react';
+
+const initialCards = [
+  {
+    id: 1,
+    badge: 'VERIFIED ASSAY',
+    code: 'BIO-CERT #994',
+    title: 'Active Niacinamide + Green Tea',
+    metric: '99.4% Purity Index',
+    status: 'Clean Lab Certified',
+    accent: '#2E4036',
+  },
+  {
+    id: 2,
+    badge: 'DERMA-SAFE',
+    code: 'CLINICAL-00',
+    title: 'Ceramide Barrier Hydration',
+    metric: '0.00 Sensitivity Delta',
+    status: 'Hypoallergenic Pass',
+    accent: '#CC5833',
+  },
+  {
+    id: 3,
+    badge: 'ECO-SUSTAINABLE',
+    code: 'CAMPUS-ECO-084',
+    title: 'Botanical Cold-Pressed Serum',
+    metric: '100% Recycled Post-Consumer',
+    status: 'Zero-Synthetics Certified',
+    accent: '#D49B4B',
+  },
+];
+
+const telemetryMessages = [
+  'DORM DISPATCH: Quad Hallway #4 batch delivered (14 mins ago)',
+  'CONCIERGE LIVE: "Hey Maya! Your lavender mist refill is downstairs."',
+  'CAMPUS LOCKER: Unit #209 unlocked with student one-tap code',
+  'SUPPORT ACTIVE: Student care concierge response time: 28 seconds',
+  'SUSTAINABILITY: Compostable botanical glass bottles collected & sterilized',
+];
 
 export default function Features() {
   /* -------------------------------------------------------------
      CARD 1: DIAGNOSTIC SHUFFLER
      Cycles 3 overlapping cards vertically every 3s with spring bounce
   ------------------------------------------------------------- */
-  const initialCards = [
-    {
-      id: 1,
-      badge: 'VERIFIED ASSAY',
-      code: 'BIO-CERT #994',
-      title: 'Active Niacinamide + Green Tea',
-      metric: '99.4% Purity Index',
-      status: 'Clean Lab Certified',
-      accent: '#2E4036',
-    },
-    {
-      id: 2,
-      badge: 'DERMA-SAFE',
-      code: 'CLINICAL-00',
-      title: 'Ceramide Barrier Hydration',
-      metric: '0.00 Sensitivity Delta',
-      status: 'Hypoallergenic Pass',
-      accent: '#CC5833',
-    },
-    {
-      id: 3,
-      badge: 'ECO-SUSTAINABLE',
-      code: 'CAMPUS-ECO-084',
-      title: 'Botanical Cold-Pressed Serum',
-      metric: '100% Recycled Post-Consumer',
-      status: 'Zero-Synthetics Certified',
-      accent: '#D49B4B',
-    },
-  ];
-
   const [cards, setCards] = useState(initialCards);
 
   useEffect(() => {
@@ -56,21 +64,13 @@ export default function Features() {
      CARD 2: TELEMETRY TYPEWRITER
      Monospace live-feed typing out service & delivery dispatches
   ------------------------------------------------------------- */
-  const telemetryMessages = [
-    'DORM DISPATCH: Quad Hallway #4 batch delivered (14 mins ago)',
-    'CONCIERGE LIVE: "Hey Maya! Your lavender mist refill is downstairs."',
-    'CAMPUS LOCKER: Unit #209 unlocked with student one-tap code',
-    'SUPPORT ACTIVE: Student care concierge response time: 28 seconds',
-    'SUSTAINABILITY: Compostable botanical glass bottles collected & sterilized',
-  ];
-
   const [currentMsgIndex, setCurrentMsgIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const fullText = telemetryMessages[currentMsgIndex];
-    let speed = isDeleting ? 25 : 45;
+    const speed = isDeleting ? 25 : 45;
 
     const timeout = setTimeout(() => {
       if (!isDeleting) {

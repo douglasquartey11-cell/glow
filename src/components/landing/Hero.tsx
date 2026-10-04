@@ -2,11 +2,10 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ArrowUpRight, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowUpRight, ShieldCheck } from 'lucide-react';
 
 export default function Hero() {
   const containerRef = useRef<HTMLElement>(null);
-  const tagRef = useRef<HTMLDivElement>(null);
   const headlinePart1Ref = useRef<HTMLHeadingElement>(null);
   const headlinePart2Ref = useRef<HTMLSpanElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
