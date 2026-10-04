@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: #2E4036;
+  --color-accent: #CC5833;
+  --color-accent-amber: #D49B4B;
+  --color-background: #F4F2EC;
+  --color-dark: #141A17;
+  --color-surface: #FCFBF9;
+  --color-card-border: rgba(46, 64, 54, 0.12);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-dark);
+}
+
+.font-drama {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+}
+
+.font-mono-data {
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+.font-heading {
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+  letter-spacing: -0.03em;
+}
+
+/* Magnetic Button Micro-interaction */
+.btn-magnetic {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px;
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-magnetic:hover {
+  transform: scale(1.03);
+}
+
+.btn-magnetic:active {
+  transform: scale(0.98);
+}
+
+.btn-magnetic .btn-slide-bg {
+  position: absolute;
+  inset: 0;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: 0;
+}
+
+.btn-magnetic:hover .btn-slide-bg {
+  transform: translateY(0);
+}
+
+.btn-magnetic-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Interactive Link Lift */
+.interactive-link {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.interactive-link:hover {
+  transform: translateY(-1px);
+}
+
+/* Pulsing Indicator */
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.92); }
+}
+
+.pulse-dot {
+  animation: pulse-subtle 2s infinite ease-in-out;
+}
+
+/* Smooth glass blur */
+.glass-nav {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Protocol Animation Keyframes */
+@keyframes scan {
+  0% { top: 0%; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes pulseWave {
+  0% { stroke-dashoffset: 320; }
+  50% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -320; }
+}
